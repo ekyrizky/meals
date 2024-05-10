@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 import java.io.IOException
 
-class MealServiceTest: ApiAbstract<MealService>() {
+class MealServiceTest : ApiAbstract<MealService>() {
 
     private lateinit var service: MealService
 
@@ -20,22 +20,21 @@ class MealServiceTest: ApiAbstract<MealService>() {
 
     @Throws(IOException::class)
     @Test
-    fun fetchCategories() = runTest {
+    fun `fetch categories test`() = runTest {
         enqueueResponse("/CategoriesResponse.json")
         val response = service.fetchCategories()
         val resBody = requireNotNull((response as ApiResponse.Success).data)
         val category = resBody.categories?.get(0)
 
         assertThat(resBody.categories?.size, `is`(14))
-        assertThat(category?.id, `is`("1"))
         assertThat(category?.name, `is`("Beef"))
         assertThat(category?.image, `is`("https://www.themealdb.com/images/category/beef.png"))
-        assertThat(category?.desc, `is`("Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"))
+        assertThat(category?.description, `is`("Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"))
     }
 
     @Throws(IOException::class)
     @Test
-    fun fetchMealsByCategory() = runTest {
+    fun `fetch meal by category test`() = runTest {
         enqueueResponse("/MealsByCategoryResponse.json")
         val response = service.fetchMealsByCategory("beef")
         val resBody = requireNotNull((response as ApiResponse.Success).data)
@@ -49,7 +48,7 @@ class MealServiceTest: ApiAbstract<MealService>() {
 
     @Throws(IOException::class)
     @Test
-    fun fetchMeal() = runTest {
+    fun `fetch meal test`() = runTest {
         enqueueResponse("/MealResponse.json")
         val response = service.fetchMeal("52878")
         val resBody = requireNotNull((response as ApiResponse.Success).data)

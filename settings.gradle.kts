@@ -23,3 +23,5 @@ rootProject.name = "meals"
 include(":app")
 include(":core:network")
 include(":core:test")
+include(":core:model")
+include(":core:database")

@@ -1,11 +1,11 @@
-package com.ekyrizky.network
+package com.ekyrizky.test
 
-import com.ekyrizky.network.model.MealCategoryResponse
-import com.ekyrizky.network.model.MealResponse
+import com.ekyrizky.model.Category
+import com.ekyrizky.model.Meal
 
-object MockUtil {
+object MockData {
 
-    fun mockCategory() = MealCategoryResponse(
+    fun mockCategory() = Category(
         name = "Beef",
         image = "https://www.themealdb.com/images/category/beef.png",
         description = "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"
@@ -13,12 +13,12 @@ object MockUtil {
 
     fun mockCategoryList() = listOf(mockCategory())
 
-    fun mockMeal() = MealResponse(
+    fun mockMeal() = Meal(
         id = "52874",
         name = "Beef and Mustard Pie",
         image = "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
-        origin = null,
-        instructions = null
+        origin = "",
+        instructions = ""
     )
 
     fun mockMealList() = listOf(mockMeal())

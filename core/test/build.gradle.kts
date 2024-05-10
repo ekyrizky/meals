@@ -23,7 +23,7 @@ android {
 
 dependencies {
 
-//    implementation(project(":core:network"))
+    implementation(project(":core:model"))
 
     implementation(libs.kotlinx.coroutines)
     implementation(libs.kotlinx.coroutines.test)

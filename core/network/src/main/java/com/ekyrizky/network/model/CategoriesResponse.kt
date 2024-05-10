@@ -11,12 +11,10 @@ data class CategoriesResponse(
 
 @JsonClass(generateAdapter = true)
 data class MealCategoryResponse(
-    @Json(name = "idCategory")
-    val id: String?,
     @Json(name = "strCategory")
     val name: String?,
     @Json(name = "strCategoryThumb")
     val image: String?,
     @Json(name = "strCategoryDescription")
-    val desc: String?
+    val description: String?
 )

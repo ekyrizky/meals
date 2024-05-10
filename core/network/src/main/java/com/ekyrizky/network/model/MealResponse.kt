@@ -20,5 +20,5 @@ data class MealResponse(
     @Json(name = "strArea")
     val origin: String?,
     @Json(name = "strInstructions")
-    val instructions: String?,
+    val instructions: String?
 )
