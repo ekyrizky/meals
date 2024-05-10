@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "meals"
 include(":app")
- 
+include(":core:network")
