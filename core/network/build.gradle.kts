@@ -28,14 +28,20 @@ android {
 
 dependencies {
 
+    implementation(project(":core:test"))
+
     // coroutines
     implementation(libs.kotlinx.coroutines)
+    testImplementation(libs.kotlinx.coroutines)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     // network
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
     implementation(libs.okhttp.interceptor)
     implementation(libs.sandwich)
+    testImplementation(libs.okhttp.mockserver)
+    testImplementation(libs.androidx.arch.core)
 
     // json
     implementation(libs.moshi)
