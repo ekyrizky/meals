@@ -64,6 +64,15 @@ mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-kotlin  = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
+[bundles]
+androidx-compose = [
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling",
+    "androidx-ui-tooling-preview",
+    "androidx-material3"
+]
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
