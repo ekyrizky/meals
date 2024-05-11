@@ -38,7 +38,7 @@ internal object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("www.themealdb.com/api/json/v1/1/")
+            .baseUrl("https://themealdb.com/api/json/v1/1/")
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()

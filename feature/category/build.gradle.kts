@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.ekyrizky.designsystem"
+    namespace = "com.ekyrizky.category"
     compileSdk = 34
 
     defaultConfig {
@@ -23,7 +24,7 @@ android {
     buildFeatures {
         compose = true
     }
-    
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
@@ -31,7 +32,15 @@ android {
 
 dependencies {
 
-    api(platform(libs.androidx.compose.bom))
-    api(libs.bundles.androidx.compose)
-    api(libs.coil.compose)
+    implementation(project(":core:model"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":core:data"))
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // di
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }
