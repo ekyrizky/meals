@@ -20,10 +20,11 @@ import com.ekyrizky.designsystem.theme.MealsTheme
 fun CategoryCard(
     imageUrl: String,
     title: String,
+    modifier: Modifier = Modifier,
     onClick: (String) -> Unit
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(6.dp)
             .fillMaxWidth()
             .clickable {

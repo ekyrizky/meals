@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/core/test" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/category" />
+            <option value="$PROJECT_DIR$/feature/meal" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
