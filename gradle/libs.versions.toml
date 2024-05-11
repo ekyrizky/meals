@@ -22,6 +22,9 @@ androidxRoom = "2.6.1"
 jetbrainsKotlinJvm = "1.9.23"
 robolectric = "4.12.1"
 androidxTest = "1.5.0"
+mockito = "5.11.0"
+mockito-kotlin = "5.2.1"
+turbine = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -57,6 +60,9 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidxRoom" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidxRoom" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-kotlin  = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

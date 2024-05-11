@@ -24,7 +24,7 @@ class MealDaoTest : LocalDatabase() {
     @Test
     fun `insert and load meals by category test`() = runBlocking {
         val mockMeals = mockMealList().asEntity()
-        mealDao.insertMealsByCategory(mockMeals)
+        mealDao.insertMeals(mockMeals)
 
         val loadFromDB = mealDao.getMealsByCategory("Beef")
         assertThat(loadFromDB.toString(), `is`(mockMeals.toString()))
@@ -32,8 +32,8 @@ class MealDaoTest : LocalDatabase() {
 
     @Test
     fun `insert and load meal test`() = runBlocking {
-        val mockMeals = mockMealList().asEntity()[0]
-        mealDao.insertMeal(mockMeals)
+        val mockMeals = mockMealList().asEntity()
+        mealDao.insertMeals(mockMeals)
 
         val loadFromDB = mealDao.getMeal(id = "52874")
         assertThat(loadFromDB.toString(), `is`(mockMeals.toString()))

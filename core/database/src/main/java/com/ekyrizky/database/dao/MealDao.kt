@@ -10,13 +10,10 @@ import com.ekyrizky.database.entity.MealEntity
 interface MealDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMeal(meal: MealEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMealsByCategory(meals: List<MealEntity>)
+    suspend fun insertMeals(meals: List<MealEntity>)
 
     @Query("SELECT * FROM MealEntity WHERE id = :id")
-    suspend fun getMeal(id: String): MealEntity
+    suspend fun getMeal(id: String): MealEntity?
 
     @Query("SELECT * FROM MealEntity WHERE name LIKE '%' || :name || '%'")
     suspend fun getMealsByCategory(name: String): List<MealEntity>

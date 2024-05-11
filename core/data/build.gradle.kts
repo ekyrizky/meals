@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ekyrizky.network"
+    namespace = "com.ekyrizky.data"
     compileSdk = 34
 
     defaultConfig {
@@ -20,15 +20,13 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
 
     implementation(project(":core:model"))
+    implementation(project(":core:network"))
+    implementation(project(":core:database"))
     testImplementation(project(":core:test"))
 
     // coroutines
@@ -37,18 +35,14 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
 
     // network
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.moshi)
-    implementation(libs.okhttp.interceptor)
     implementation(libs.sandwich)
-    testImplementation(libs.okhttp.mockserver)
-    testImplementation(libs.androidx.arch.core)
-
-    // json
-    implementation(libs.moshi)
-    ksp(libs.moshi.codegen)
 
     // di
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.turbine)
 }
