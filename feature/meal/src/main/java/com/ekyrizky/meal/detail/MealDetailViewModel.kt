@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ekyrizky.data.repository.meal.MealRepository
-import com.ekyrizky.meal.navigation.MealArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -19,10 +18,9 @@ class MealDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val mealArgs: MealArgs = MealArgs(savedStateHandle)
-    val mealID = mealArgs.mealID
+    private val mealID = savedStateHandle.getStateFlow<String>("id", "")
 
-    val uiState: StateFlow<MealDetailUiState> = mealRepository.fetchMeal(mealID)
+    val uiState: StateFlow<MealDetailUiState> = mealRepository.fetchMeal(mealID.value)
         .map { MealDetailUiState.Success(it) }
         .catch { MealDetailUiState.Error(it.message.toString()) }
         .stateIn(

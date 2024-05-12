@@ -16,34 +16,30 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ekyrizky.designsystem.component.CategoryCard
 import com.ekyrizky.designsystem.component.CircularProgress
 import com.ekyrizky.designsystem.component.MealsTopAppBar
+import com.ekyrizky.designsystem.icon.MealsIcon
+import com.ekyrizky.navigation.MealsScreen
+import com.ekyrizky.navigation.currentComposeNavigator
 
 @Composable
 fun MealListRoute(
     modifier: Modifier = Modifier,
-    viewModel: MealListViewModel = hiltViewModel(),
-    onBackClick: () -> Unit,
-    onClick: (String) -> Unit
+    viewModel: MealListViewModel = hiltViewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val category = viewModel.mealCategory
 
     MealListScreen(
-        category = category,
-        uiState = uiState,
-        onBackClick = onBackClick,
-        onClick = onClick
+        uiState = uiState
     )
 }
 
 @Composable
 private fun MealListScreen(
-    category: String,
     uiState: MealListUiState,
-    modifier: Modifier = Modifier,
-    onBackClick: () -> Unit,
-    onClick: (String) -> Unit
+    modifier: Modifier = Modifier
 ) {
+
+    val composeNavigator = currentComposeNavigator
 
     when (uiState) {
         is MealListUiState.Error -> {
@@ -62,8 +58,9 @@ private fun MealListScreen(
                 modifier = modifier.fillMaxSize(),
                 topBar = {
                     MealsTopAppBar(
-                        title = category,
-                        onNavigationClick = onBackClick
+                        title = uiState.data[0].name,
+                        navigationIcon = MealsIcon.ArrowBack,
+                        onNavigationClick = { composeNavigator.navigateUp() }
                     )
                 }
             ) { contentPadding ->
@@ -76,7 +73,7 @@ private fun MealListScreen(
                             imageUrl = meal.image,
                             title = meal.name
                         ) {
-                            onClick(meal.id)
+                            composeNavigator.navigate(MealsScreen.MealDetail.createRoute(id = meal.id))
                         }
                     }
                 }

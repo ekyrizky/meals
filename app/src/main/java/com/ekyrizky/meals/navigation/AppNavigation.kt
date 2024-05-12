@@ -4,30 +4,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
-import com.ekyrizky.category.CATEGORY_ROUTE
-import com.ekyrizky.category.categoryScreen
-import com.ekyrizky.meal.navigation.mealsScreen
-import com.ekyrizky.meal.navigation.navigateToMeal
-import com.ekyrizky.meal.navigation.navigateToMealList
+import androidx.navigation.compose.composable
+import com.ekyrizky.category.CategoryListRoute
+import com.ekyrizky.meal.detail.MealDetailRoute
+import com.ekyrizky.meal.list.MealListRoute
+import com.ekyrizky.navigation.MealsScreen
 
 @Composable
 fun AppNavigation(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
-    startDestination: String = CATEGORY_ROUTE
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,
-        startDestination = startDestination,
+        startDestination = MealsScreen.CategoryList.name,
         modifier = modifier
     ) {
-        categoryScreen(
-            onClick = navController::navigateToMealList
-        )
-        mealsScreen(
-            onBackClick = navController::popBackStack,
-            onClick = navController::navigateToMeal
-        )
+        composable(route = MealsScreen.CategoryList.name) {
+            CategoryListRoute()
+        }
+        composable(
+            route = MealsScreen.MealList.name,
+            arguments = MealsScreen.MealList.navArguments
+        ) {
+            MealListRoute()
+        }
+
+        composable(
+            route = MealsScreen.MealDetail.name,
+            arguments = MealsScreen.MealDetail.navArguments
+        ) {
+            MealDetailRoute()
+        }
     }
 }

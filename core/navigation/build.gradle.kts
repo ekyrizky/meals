@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ekyrizky.category"
+    namespace = "com.ekyrizky.navigation"
     compileSdk = 34
 
     defaultConfig {
@@ -32,14 +32,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core:model"))
-    implementation(project(":core:designsystem"))
-    implementation(project(":core:data"))
-    implementation(project(":core:navigation"))
-
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.androidx.compose)
+    api(libs.androidx.navigation.compose)
 
     // di
     implementation(libs.hilt.android)

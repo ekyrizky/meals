@@ -17,28 +17,28 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ekyrizky.designsystem.component.CategoryCard
 import com.ekyrizky.designsystem.component.CircularProgress
 import com.ekyrizky.designsystem.component.MealsTopAppBar
+import com.ekyrizky.navigation.MealsScreen
+import com.ekyrizky.navigation.currentComposeNavigator
 import com.ekyrizky.designsystem.R as systemR
 
 @Composable
 fun CategoryListRoute(
     modifier: Modifier = Modifier,
-    viewModel: CategoryViewModel = hiltViewModel(),
-    onClick: (String) -> Unit
+    viewModel: CategoryViewModel = hiltViewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     CategoryListScreen(
-        uiState = uiState,
-        onClick = onClick
+        uiState = uiState
     )
 }
 
 @Composable
 private fun CategoryListScreen(
     uiState: CategoryUiState,
-    modifier: Modifier = Modifier,
-    onClick: (String) -> Unit
+    modifier: Modifier = Modifier
 ) {
+    val composeNavigator = currentComposeNavigator
 
     when (uiState) {
         is CategoryUiState.Error -> {
@@ -68,7 +68,7 @@ private fun CategoryListScreen(
                             imageUrl = category.image,
                             title = category.name
                         ) {
-                            onClick(it)
+                            composeNavigator.navigate(MealsScreen.MealList.createRoute(category = category.name))
                         }
                     }
                 }

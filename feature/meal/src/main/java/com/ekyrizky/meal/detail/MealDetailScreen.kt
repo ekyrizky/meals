@@ -1,6 +1,5 @@
 package com.ekyrizky.meal.detail
 
-import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -14,31 +13,29 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ekyrizky.designsystem.component.CategoryCard
 import com.ekyrizky.designsystem.component.CircularProgress
 import com.ekyrizky.designsystem.component.MealsTopAppBar
+import com.ekyrizky.designsystem.icon.MealsIcon
+import com.ekyrizky.navigation.currentComposeNavigator
 
 @Composable
 fun MealDetailRoute(
     modifier: Modifier = Modifier,
-    viewModel: MealDetailViewModel = hiltViewModel(),
-    onBackClick: () -> Unit
+    viewModel: MealDetailViewModel = hiltViewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val id = viewModel.mealID
 
     MealDetailScreen(
-        id = id,
-        uiState = uiState,
-        onBackClick = onBackClick
+        uiState = uiState
     )
 }
 
 @Composable
 private fun MealDetailScreen(
-    id: String,
     uiState: MealDetailUiState,
-    modifier: Modifier = Modifier,
-    onBackClick: () -> Unit
+    modifier: Modifier = Modifier
 ) {
+
+    val composeNavigator = currentComposeNavigator
 
     when (uiState) {
         is MealDetailUiState.Error -> {
@@ -57,8 +54,9 @@ private fun MealDetailScreen(
                 modifier = modifier.fillMaxSize(),
                 topBar = {
                     MealsTopAppBar(
-                        title = id,
-                        onNavigationClick = onBackClick
+                        title = uiState.data.name,
+                        navigationIcon = MealsIcon.ArrowBack,
+                        onNavigationClick = { composeNavigator.navigateUp() }
                     )
                 }
             ) { contentPadding ->
