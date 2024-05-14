@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.ekyrizky.designsystem.component.CategoryCard
+import com.ekyrizky.category.component.CategoryCard
 import com.ekyrizky.designsystem.component.CircularProgress
 import com.ekyrizky.designsystem.component.MealsTopAppBar
 import com.ekyrizky.navigation.MealsScreen

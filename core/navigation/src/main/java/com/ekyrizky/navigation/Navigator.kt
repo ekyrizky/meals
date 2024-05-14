@@ -1,6 +1,5 @@
 package com.ekyrizky.navigation
 
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavOptionsBuilder
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -37,8 +36,6 @@ abstract class AppComposeNavigator : Navigator() {
     private fun NavController.handleComposeNavigationCommand(navigationCommand: NavigationCommand) {
         when (navigationCommand) {
             is ComposeNavigationCommand.NavigateToRoute -> {
-                Log.e("log__","navigationCommand.route ${navigationCommand.route}")
-                Log.e("log__","navigationCommand.options ${navigationCommand.options}")
                 navigate(navigationCommand.route, navigationCommand.options)
             }
 

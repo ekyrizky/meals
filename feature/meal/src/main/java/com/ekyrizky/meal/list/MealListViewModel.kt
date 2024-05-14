@@ -18,7 +18,7 @@ class MealListViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val mealCategory = savedStateHandle.getStateFlow<String>("category", "")
+    val mealCategory = savedStateHandle.getStateFlow<String>("category", "")
 
     val uiState: StateFlow<MealListUiState> = mealRepository.fetchMealsByCategory(mealCategory.value)
         .map { MealListUiState.Success(it) }

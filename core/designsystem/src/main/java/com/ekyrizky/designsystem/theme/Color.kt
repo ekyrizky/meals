@@ -11,15 +11,17 @@ data class MealsColors(
     val onPrimary: Color,
     val secondary: Color,
     val onSecondary: Color,
+    val tertiary: Color,
     val background: Color
 ) {
     companion object {
         @Composable
         fun defaultColors(): MealsColors = MealsColors(
-            primary = Color(0xFFEA0029),
-            onPrimary = Color.White,
+            primary = Color(0xFF9E1A44),
+            onPrimary = Color(0xB2FFFFFF),
             secondary = Color(0xFFFFC72C),
             onSecondary = Color.White,
+            tertiary = Color(0xFFB1A5A5),
             background = Color(0xFFF4EBF4),
         )
     }

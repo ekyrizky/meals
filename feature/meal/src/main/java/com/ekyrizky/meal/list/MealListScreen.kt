@@ -27,15 +27,19 @@ fun MealListRoute(
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val category by viewModel.mealCategory.collectAsStateWithLifecycle()
 
     MealListScreen(
-        uiState = uiState
+        uiState = uiState,
+        category = category,
+        modifier = modifier
     )
 }
 
 @Composable
 private fun MealListScreen(
     uiState: MealListUiState,
+    category: String,
     modifier: Modifier = Modifier
 ) {
 
@@ -58,7 +62,7 @@ private fun MealListScreen(
                 modifier = modifier.fillMaxSize(),
                 topBar = {
                     MealsTopAppBar(
-                        title = uiState.data[0].name,
+                        title = category,
                         navigationIcon = MealsIcon.ArrowBack,
                         onNavigationClick = { composeNavigator.navigateUp() }
                     )

@@ -1,6 +1,5 @@
 package com.ekyrizky.navigation
 
-import android.util.Log
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType.Companion.StringType
 import androidx.navigation.navArgument
@@ -22,11 +21,6 @@ sealed class MealsScreen(
         )
     ) {
         fun createRoute(category: String): String {
-            Log.e("log__","category = $category")
-            Log.e("log__","navArguments= ${navArguments}")
-            Log.e("log__","navArguments first= ${navArguments.first()}")
-            Log.e("log__","navArguments name= ${navArguments.first().name}")
-            Log.e("log__","navArguments replace= ${name.replace("{${navArguments.first().name}}", category)}")
             return name.replace("{${navArguments.first().name}}", category)
         }
 

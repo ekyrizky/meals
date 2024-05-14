@@ -25,7 +25,8 @@ fun MealDetailRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     MealDetailScreen(
-        uiState = uiState
+        uiState = uiState,
+        modifier = modifier
     )
 }
 

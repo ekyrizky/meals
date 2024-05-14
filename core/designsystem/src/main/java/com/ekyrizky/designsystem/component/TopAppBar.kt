@@ -27,7 +27,7 @@ fun MealsTopAppBar(
     CenterAlignedTopAppBar(
         title = {
             Text(
-                text = title,
+                text = title.uppercase(),
                 style = MealsTheme.typography.titleLarge
             )
         },
