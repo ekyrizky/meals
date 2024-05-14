@@ -65,10 +65,12 @@ private fun CategoryListScreen(
                 ) {
                     items(uiState.data) { category ->
                         CategoryCard(
-                            imageUrl = category.image,
-                            title = category.name
-                        ) {
-                            composeNavigator.navigate(MealsScreen.MealList.createRoute(category = category.name))
+                           category = category
+                        ) { id ->
+                            composeNavigator.navigate(
+                                route = MealsScreen.MealList.createRoute(category = id),
+                                optionsBuilder = { launchSingleTop = true }
+                            )
                         }
                     }
                 }

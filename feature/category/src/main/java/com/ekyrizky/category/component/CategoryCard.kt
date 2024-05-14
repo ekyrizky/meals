@@ -17,11 +17,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ekyrizky.designsystem.theme.MealsTheme
+import com.ekyrizky.model.Category
 
 @Composable
 fun CategoryCard(
-    imageUrl: String,
-    title: String,
+    category: Category,
     modifier: Modifier = Modifier,
     onClick: (String) -> Unit
 ) {
@@ -30,7 +30,7 @@ fun CategoryCard(
             .padding(6.dp)
             .fillMaxWidth()
             .clickable {
-                onClick(title)
+                onClick(category.name)
             },
         shape = RoundedCornerShape(14.dp),
         colors = CardColors(
@@ -42,7 +42,7 @@ fun CategoryCard(
         border = BorderStroke(2.dp, color = MealsTheme.colors.secondary)
     ) {
         AsyncImage(
-            model = imageUrl,
+            model = category.image,
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -55,7 +55,7 @@ fun CategoryCard(
                 .align(Alignment.CenterHorizontally)
                 .fillMaxWidth()
                 .padding(12.dp),
-            text = title,
+            text = category.name,
             style = MealsTheme.typography.titleMedium,
             textAlign = TextAlign.Center
         )
@@ -67,8 +67,11 @@ fun CategoryCard(
 private fun CategoryCardPreview() {
     MealsTheme {
         CategoryCard(
-            imageUrl = "",
-            title = "Beef",
+            Category(
+                name = "Beef",
+                image = "https://www.themealdb.com/images/category/beef.png",
+                description = ""
+            ),
             onClick = {}
         )
     }

@@ -19,7 +19,7 @@ data class MealsColors(
         fun defaultColors(): MealsColors = MealsColors(
             primary = Color(0xFF9E1A44),
             onPrimary = Color(0xB2FFFFFF),
-            secondary = Color(0xFFFFC72C),
+            secondary = Color(0xFFFFA726),
             onSecondary = Color.White,
             tertiary = Color(0xFFB1A5A5),
             background = Color(0xFFF4EBF4),
