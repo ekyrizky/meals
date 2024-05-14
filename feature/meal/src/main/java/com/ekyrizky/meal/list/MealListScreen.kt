@@ -73,7 +73,10 @@ private fun MealListScreen(
                             meal = meal,
                             index = index
                         ) { id ->
-                            composeNavigator.navigate(MealsScreen.MealDetail.createRoute(id = id))
+                            composeNavigator.navigate(
+                                route = MealsScreen.MealDetail.createRoute(id = id),
+                                optionsBuilder = { launchSingleTop = true }
+                            )
                         }
                     }
                 }
